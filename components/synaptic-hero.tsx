@@ -92,10 +92,9 @@ export function SynapticHero() {
           muted
           playsInline
           preload="auto"
-          poster="/images/synaptic-hands-alpha-poster.png"
+          aria-label="DaQube platform demonstration video"
         >
-          <source src="/videos/synaptic-hands-alpha.webm" type="video/webm" />
-          <source src="/videos/synaptic-hands-dark.mp4" type="video/mp4" />
+          <source src="/videos/frontpage.mp4" type="video/mp4" />
         </video>
 
         {/* Caption from Image 1 */}

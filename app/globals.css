@@ -1,20 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   THEME DESIGN TOKENS (LIGHT & DARK MODES)
+   ========================================================================== */
+
+/* LIGHT THEME (Default) */
 :root {
-  /* Site-wide Palette */
+  color-scheme: light;
+
+  /* Surfaces & Backgrounds */
+  --obsidian: #ffffff;
+  --obsidian-surface: #f8fafc;
+  --obsidian-card: #ffffff;
+  --obsidian-card-hover: #f1f5f9;
+  --obsidian-elevated: #ffffff;
+
+  /* Typography & Text */
+  --silver: #334155;
+  --silver-bright: #0f172a;
+  --silver-muted: #64748b;
+  --silver-dark: #94a3b8;
+
+  /* Borders & Dividers */
+  --silver-border: rgba(15, 23, 42, 0.10);
+  --silver-border-hover: rgba(15, 23, 42, 0.22);
+
+  /* Primary Accent & Glow */
+  --crimson: #2563eb;
+  --crimson-hover: #1d4ed8;
+  --crimson-dark: #1e40af;
+  --crimson-glow: rgba(37, 99, 235, 0.22);
+  --crimson-subtle: rgba(37, 99, 235, 0.08);
+
+  /* Legacy variable mappings to maintain compatibility */
+  --ink: var(--silver-bright);
+  --muted: var(--silver-muted);
+  --blue: var(--crimson);
+  --blue2: var(--crimson-hover);
+  --navy: #0f172a;
+  --line: var(--silver-border);
+  --tint: var(--obsidian-surface);
+  --cyan: #0284c7;
+  --white: #ffffff;
+  --radius: 18px;
+}
+
+/* DARK THEME */
+.dark {
+  color-scheme: dark;
+
+  /* Surfaces & Backgrounds */
   --obsidian: #080808;
   --obsidian-surface: #0e0e0e;
   --obsidian-card: #121212;
   --obsidian-card-hover: #181818;
   --obsidian-elevated: #1e1e1e;
 
+  /* Typography & Text */
   --silver: #CDCBCA;
   --silver-bright: #F5F5F4;
   --silver-muted: #8F8E8D;
   --silver-dark: #5A5958;
+
+  /* Borders & Dividers */
   --silver-border: rgba(205, 203, 202, 0.14);
   --silver-border-hover: rgba(205, 203, 202, 0.32);
 
+  /* Primary Accent & Glow */
   --crimson: #D51515;
   --crimson-hover: #EC1C1C;
   --crimson-dark: #9E0E0E;
@@ -51,6 +106,7 @@ body {
   font-size: 15px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -79,12 +135,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 /* Header matching Image 2 with top navigation */
 .site-header {
   height: 78px;
-  background: rgba(8, 8, 8, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--silver-border);
   position: sticky;
   top: 0;
   z-index: 50;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .site-header {
+  background: rgba(8, 8, 8, 0.88);
 }
 
 .nav-wrap {
@@ -325,7 +386,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .hero-ambient-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 45%, rgba(213, 21, 21, 0.16) 0%, rgba(8, 8, 8, 0) 65%);
+  background: radial-gradient(circle at 50% 45%, var(--crimson-glow) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -1828,7 +1889,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     top: 67px;
     left: 0;
     right: 0;
-    background: #0d0d0d;
+    background: var(--obsidian);
     border-bottom: 1px solid var(--silver-border);
     padding: 18px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
@@ -2156,11 +2217,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 .why-choose-section {
   position: relative;
-  background-color: #08080A;
+  background-color: var(--obsidian-surface);
   padding: 100px 0 110px;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--silver-border);
+  border-bottom: 1px solid var(--silver-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .why-choose-ambient-glow {
@@ -2195,8 +2257,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--crimson-hover, #EC1C1C);
-  background: rgba(213, 21, 21, 0.1);
-  border: 1px solid rgba(213, 21, 21, 0.25);
+  background: var(--crimson-subtle);
+  border: 1px solid var(--crimson-glow);
   padding: 5px 13px;
   border-radius: 999px;
   margin-bottom: 18px;
@@ -2208,22 +2270,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-weight: 800;
   line-height: 1.22;
   letter-spacing: -0.025em;
-  color: #F5F5F4;
+  color: var(--silver-bright);
   margin: 0 0 16px 0;
 }
 
 .why-choose-title-highlight {
-  color: #FFFFFF;
-  background: linear-gradient(135deg, #FFFFFF 30%, #CDCBCA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--crimson);
 }
 
 .why-choose-subtitle {
   font-family: "DM Sans", sans-serif;
   font-size: 17px;
   line-height: 1.6;
-  color: #8F8E8D;
+  color: var(--silver-muted);
   margin: 0;
   max-width: 720px;
 }
@@ -2238,19 +2297,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .why-choose-card {
   display: flex;
   flex-direction: column;
-  background: #111116;
-  border: 1px solid rgba(205, 203, 202, 0.12);
+  background: var(--obsidian-card);
+  border: 1px solid var(--silver-border);
   border-radius: 18px;
   padding: 38px 28px 34px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   position: relative;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
 
 .why-choose-card:hover {
   transform: translateY(-5px);
   border-color: rgba(255, 122, 26, 0.4);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 28px rgba(255, 122, 26, 0.12);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15), 0 0 28px rgba(255, 122, 26, 0.12);
 }
 
 /* Top Vibrant Orange Circular Badge */
@@ -2278,7 +2337,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-size: 20px;
   font-weight: 700;
   line-height: 1.35;
-  color: #FFFFFF;
+  color: var(--silver-bright);
   margin: 0 0 20px 0;
   letter-spacing: -0.015em;
   min-height: 54px;
@@ -2301,7 +2360,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-family: "DM Sans", sans-serif;
   font-size: 13.5px;
   line-height: 1.55;
-  color: #B3B1BE;
+  color: var(--silver);
 }
 
 .why-choose-bullet-dot {

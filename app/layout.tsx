@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ThemeProvider } from "@/components/theme-provider";
+import { FancyCursor } from "@/components/fancy-cursor";
 
 export const metadata: Metadata = {
   title: {
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en">
-      <body>
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
+    <html lang="en" suppressHydrationWarning className="dark">
+      <body className="antialiased selection:bg-blue-500/30 selection:text-blue-200">
+        <ThemeProvider>
+          {/* Custom Interactive Fancy Cursor */}
+          <FancyCursor />
+
+          <SiteHeader />
+          <main id="main-content">{children}</main>
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

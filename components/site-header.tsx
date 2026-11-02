@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Brand } from "@/components/brand";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { href: "/services", label: "Services" },
@@ -37,11 +38,16 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <div className="mobile-nav-footer flex items-center justify-between pt-4 mt-2 border-t border-border/40 md:hidden">
+            <span className="text-xs text-muted font-medium">Appearance</span>
+            <ThemeToggle />
+          </div>
           <Link className="mobile-cta" href="/contact" onClick={() => setOpen(false)}>
             Discuss a project <ArrowUpRight size={16} />
           </Link>
         </nav>
         <div className="nav-actions">
+          <ThemeToggle className="hidden sm:inline-flex" />
           <Link className="button button-crimson button-small" href="/contact">
             Discuss a project <ArrowUpRight size={15} />
           </Link>
