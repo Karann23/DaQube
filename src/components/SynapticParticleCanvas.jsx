@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
  * SynapticParticleCanvas
  * Lightweight, hardware-accelerated HTML5 2D canvas particle constellation.
  * Generates floating synaptic nodes with pulsing axons and smooth cursor gravity.
- * 60/120fps locked, zero external dependencies, battery friendly.
+ * Automatically pauses rendering when scrolled out of view for 60/120fps scrolling.
  */
 export function SynapticParticleCanvas({ className = "", particleCount = 45, connectionDistance = 120 }) {
   const canvasRef = useRef(null);
@@ -62,7 +62,10 @@ export function SynapticParticleCanvas({ className = "", particleCount = 45, con
     canvas.parentElement?.addEventListener("mouseleave", handleMouseLeave);
 
     let animationFrameId;
+    let isVisible = true;
+
     const render = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
       // Update and draw particles
@@ -119,9 +122,22 @@ export function SynapticParticleCanvas({ className = "", particleCount = 45, con
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    // Pause rendering when off-screen to preserve 60/120fps scrolling smoothness
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = requestAnimationFrame(render);
+      } else {
+        cancelAnimationFrame(animationFrameId);
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(canvas);
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
+      observer.disconnect();
       window.removeEventListener("resize", handleResize);
       canvas.parentElement?.removeEventListener("mousemove", handleMouseMove);
       canvas.parentElement?.removeEventListener("mouseleave", handleMouseLeave);

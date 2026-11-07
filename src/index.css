@@ -75,7 +75,8 @@ h3, .card-title, .verkos-card-title, .modality-card h3, .principle-card h3 {
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Lenis smooth scrolling */
+  scroll-behavior: auto !important;
   background-color: var(--obsidian);
   max-width: 100%;
   overflow-x: hidden;
