@@ -32,13 +32,10 @@ import { caseStudies } from "../lib/content";
 
 // ============================================================================
 // SERVICE DOMAIN REGISTRY
-// Inspired by GTS.ai classifications, ordered by market project demand / trend,
-// with concise, human-friendly 1-2 lines and use cases inspired by LXT.ai.
-// STRICTLY IMAGE-ONLY (No video player or stream options).
 // ============================================================================
 
 export const SERVICE_DOMAINS_MAP = {
-  // 1. IMAGE DATA COLLECTION (All 17 GTS.ai Categories Ranked by Market Demand)
+  // 1. IMAGE DATA COLLECTION
   "image-collection": [
     {
       id: "automotive-data",
@@ -166,7 +163,7 @@ export const SERVICE_DOMAINS_MAP = {
       title: "Sports & Activities",
       icon: Activity,
       summary: "High-speed action photos capturing athlete movements, equipment trajectories, and live game situations across sporting arenas.",
-      photoUrl: "/images/Solutions/Image Collection/Sports & Activities_card.webp",
+      photoUrl: "/images/Solutions/Image Collection/Sports & Activities_card.jpg",
       photoLabel: "Athletic Arena & Sprint Capture",
       useCases: [
         "Player tracking and movement analytics",
@@ -1253,6 +1250,19 @@ export function SpatialDomainStage({ serviceSlug = "image-collection", serviceTi
   const prevDomain = () => {
     selectDomain((currentIndex - 1 + domainList.length) % domainList.length);
   };
+
+  // Auto-scroll the domain pill ribbon smoothly as active card changes
+  useEffect(() => {
+    if (!ribbonRef.current) return;
+    const activePill = ribbonRef.current.querySelector(".spatial-nav-pill.active");
+    if (activePill) {
+      activePill.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [currentIndex]);
 
   return (
     <div className="spatial-stage-wrapper">

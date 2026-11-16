@@ -313,7 +313,6 @@ export function SiteHeader() {
             onClick={() => setActiveDropdown(null)}
           >
             <span>Network</span>
-            <span className="site-nav-badge">Global</span>
           </Link>
 
           {/* 3. CASE STUDIES (Direct Link) */}

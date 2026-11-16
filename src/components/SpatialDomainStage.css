@@ -174,7 +174,7 @@
   z-index: 10;
   max-width: 1080px;
   margin: 0 auto;
-  min-height: 480px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,6 +184,7 @@
 .spatial-card-3d {
   position: relative;
   width: 100%;
+  min-height: 520px;
   background: #FFFFFF;
   border: 1px solid rgba(20, 23, 26, 0.1);
   border-radius: 28px;
@@ -193,6 +194,8 @@
   overflow: hidden;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
   transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Dual Column Layout: Left Image Preview + Right Concise Info */
@@ -200,12 +203,18 @@
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 0;
-  min-height: 480px;
+  min-height: 520px;
+  flex: 1;
+  align-items: stretch;
 }
 
 @media (max-width: 900px) {
   .spatial-card-grid {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .spatial-card-3d {
+    min-height: auto;
   }
 }
 
@@ -218,6 +227,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 24px;
+  height: 100%;
 }
 
 .spatial-media-frame {
@@ -275,8 +285,15 @@
   padding: 40px 36px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: 520px;
   background: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+  .spatial-info-col {
+    min-height: auto;
+  }
 }
 
 @media (max-width: 640px) {

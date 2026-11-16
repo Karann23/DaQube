@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -13,9 +13,13 @@ import {
   Compass,
   ClipboardCheck,
   Handshake,
+  Grid3X3,
+  ChevronDown,
+  Layers,
 } from "lucide-react";
 
 import "./AboutPage.css";
+import { aboutCollagePhotos } from "../lib/about-collage-data";
 
 /* =========================================================
    EDITABLE PAGE CONTENT
@@ -26,40 +30,40 @@ import "./AboutPage.css";
 
 const collagePhotos = [
   {
-    src: "/images/robotics_main.webp",
-    alt: "Robotics research and human interaction with intelligent systems",
+    src: "/images/About/ai-robotics-interaction.png",
+    alt: "Robotics research and human-AI physical interaction",
   },
   {
-    src: "/images/services_image_collection.webp",
-    alt: "Examples of image data collection across different subjects",
+    src: "/images/About/traffic-management-ai.jpg",
+    alt: "Smart traffic management and urban vehicle tracking",
   },
   {
-    src: "/images/services_video_collection.webp",
-    alt: "Video and motion data collection examples",
+    src: "/images/About/egocentric-video-device.jpg",
+    alt: "Egocentric video collection and first-person streaming hardware",
   },
   {
-    src: "/images/annotation_main.jpg",
-    alt: "Structured image annotation and bounding box example",
+    src: "/images/About/person-re-identification.jpg",
+    alt: "Pedestrian bounding box annotation and re-identification",
   },
   {
-    src: "/images/services_annotation.webp",
-    alt: "Examples of visual data annotation",
+    src: "/images/About/sports-data-annotation.jpg",
+    alt: "Multi-player athletic tracking and spatial segmentation",
   },
   {
-    src: "/images/speech_main.webp",
-    alt: "Speech and audio data workflow",
+    src: "/images/About/audio-sound-capture.jpg",
+    alt: "Speech and acoustic environment data recording",
   },
   {
-    src: "/images/services_speech_collection.webp",
-    alt: "Audio and speech collection examples",
+    src: "/images/About/real-time-translation.jpg",
+    alt: "Multilingual voice translation and audio intelligence",
   },
   {
-    src: "/images/services_transcription.webp",
-    alt: "Transcription and language data workflow examples",
+    src: "/images/About/voice-search-audio.png",
+    alt: "Phonetic voice search and acoustic waveform analysis",
   },
   {
-    src: "/images/video_collection_main.jpg",
-    alt: "Video dataset processing and analysis",
+    src: "/images/About/safety-compliance-monitoring.jpg",
+    alt: "Multi-camera vision monitoring and safety compliance",
   },
 ];
 
@@ -130,8 +134,6 @@ const values = [
 
 /* =========================================================
    WORD REVEAL
-   Each word is its own inline block with an explicit visual
-   gap. This avoids the collapsed/missing spaces in headings.
 ========================================================= */
 
 function WordReveal({ text, className = "" }) {
@@ -435,33 +437,44 @@ export function AboutPage() {
       <section className="dq-visual-story-section">
         <div className="dq-about-container">
           <div className="dq-collage-heading" data-dq-reveal>
-            <div className="dq-eyebrow">
-              <span className="dq-eyebrow-dot" />
-              A CLOSER LOOK AT THE WORK
+            <div>
+              <div className="dq-eyebrow">
+                <span className="dq-eyebrow-dot" />
+                A CLOSER LOOK AT THE WORK
+              </div>
+              <p>
+                Different forms of information. One thoughtful approach to
+                making data useful for AI.
+              </p>
             </div>
-            <p>
-              Different forms of information. One thoughtful approach to
-              making data useful for AI.
-            </p>
           </div>
 
-          <div className="dq-photo-collage dq-photo-collage--expanded">
-            {collagePhotos.map((photo, index) => (
-              <figure
-                className={`dq-photo dq-photo--${index + 1}`}
-                key={photo.src}
-                data-dq-reveal
-                style={{ "--reveal-delay": `${(index % 4) * 65}ms` }}
-              >
-                <img src={photo.src} alt={photo.alt} loading="eager" decoding="async" />
-              </figure>
-            ))}
-
-            <div className="dq-collage-center" aria-label="DaQube">
-              <span className="dq-collage-ring">
-                <img src="/images/logos/daqube-logo.svg" alt="DaQube" />
-              </span>
-            </div>
+          <div className="dq-photo-collage dq-photo-collage--full35">
+            {aboutCollagePhotos.map((photo, index) => {
+              const isWide = index === 0 || index === 9 || index === 33;
+              return (
+                <React.Fragment key={photo.src}>
+                  {index === 16 && (
+                    <div className="dq-collage-center-badge" aria-label="DaQube">
+                      <div className="dq-collage-ring">
+                        <img src="/images/logos/daqube-logo.svg" alt="DaQube" />
+                      </div>
+                    </div>
+                  )}
+                  <figure
+                    className={`dq-photo dq-photo--item ${isWide ? "dq-photo--wide" : ""}`}
+                    data-dq-reveal
+                    style={{ "--reveal-delay": `${(index % 6) * 40}ms` }}
+                  >
+                    <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+                    <div className="dq-photo-overlay">
+                      <span className="dq-photo-cat">{photo.category}</span>
+                      <span className="dq-photo-desc">{photo.alt}</span>
+                    </div>
+                  </figure>
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -663,7 +676,11 @@ export function AboutPage() {
             </div>
 
             <div className="dq-cta-watermark" aria-hidden="true">
-              DQ
+              <img
+                src="/images/logos/daqube-mark.svg"
+                alt="DaQube Mark"
+                className="dq-cta-watermark-img"
+              />
             </div>
           </div>
         </div>

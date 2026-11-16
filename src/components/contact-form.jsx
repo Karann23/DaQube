@@ -35,7 +35,7 @@ const TIMELINE_OPTIONS = [
 
 export function ContactForm() {
   const [searchParams] = useSearchParams();
-  const [selectedService, setSelectedService] = useState("image-collection");
+  const [selectedService, setSelectedService] = useState("");
   const [selectedScope, setSelectedScope] = useState("production");
   const [volumeCount, setVolumeCount] = useState("");
   const [volumeUnit, setVolumeUnit] = useState("items");
@@ -81,7 +81,10 @@ export function ContactForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 
-  const activeCapability = CAPABILITIES.find((c) => c.id === selectedService) || CAPABILITIES[0];
+  const activeCapability = CAPABILITIES.find((c) => c.id === selectedService) || {
+    id: "",
+    label: "Custom AI Workflow"
+  };
   const activeScopeObj = SCOPE_TIERS.find((s) => s.id === selectedScope) || SCOPE_TIERS[1];
   const activeTimelineObj = TIMELINE_OPTIONS.find((t) => t.id === selectedTimeline) || TIMELINE_OPTIONS[1];
 
@@ -182,6 +185,9 @@ export function ContactForm() {
             onChange={(e) => setSelectedService(e.target.value)}
             className="w-full appearance-none rounded-xl border border-[rgba(20,23,26,0.14)] bg-white px-4 py-3 pr-10 text-sm font-semibold text-[#12151A] outline-none transition-all cursor-pointer hover:border-[rgba(20,23,26,0.3)] focus:border-[#EC5E27] focus:ring-2 focus:ring-[#EC5E27]/20"
           >
+            <option value="" disabled>
+              Select a Service
+            </option>
             {CAPABILITIES.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.label}
@@ -337,7 +343,7 @@ export function ContactForm() {
       <div className="mt-5 p-3.5 rounded-xl bg-[#FFF3ED]/60 border border-[#EC5E27]/20 flex items-center gap-2 text-xs">
         <Sparkles size={16} className="text-[#EC5E27] shrink-0" />
         <span className="text-[#12151A] font-medium">
-          Active Scoping Blueprint: <strong>{activeCapability.label}</strong> ({volumeSummary}) · <strong>{activeTimelineObj.time}</strong>
+          Active Scoping Blueprint: <strong>{selectedService ? activeCapability.label : "Select a service above"}</strong> ({volumeSummary}) · <strong>{activeTimelineObj.time}</strong>
         </span>
       </div>
 

@@ -93,7 +93,7 @@ export function SiteFooter() {
               <h4 className="daqube-footer-newsletter-title !mb-2">FOLLOW US</h4>
               <div className="daqube-footer-socials">
                 <a
-                  href="https://www.linkedin.com"
+                  href="https://www.linkedin.com/company/daqube-ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="daqube-footer-social-btn"
@@ -144,7 +144,7 @@ export function SiteFooter() {
           </div>
 
           <img
-            src="/images/logos/daqube-logo-white.svg"
+            src="/images/logos/extra/daqube-logo-white.svg"
             alt="DaQube"
             className="daqube-footer-giant-logo"
             loading="eager"

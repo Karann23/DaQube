@@ -76,7 +76,8 @@
   font-size: clamp(38px, 5vw, 64px);
   font-weight: 650;
   line-height: 1.08;
-  letter-spacing: -2.5px;
+  letter-spacing: -0.02em;
+  word-spacing: 0.05em;
   margin: 0 0 22px;
   text-shadow: 0 3px 20px rgba(0, 0, 0, 0.35);
 }

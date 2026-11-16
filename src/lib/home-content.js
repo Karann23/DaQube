@@ -8,25 +8,25 @@ export const homeModalityCards = [
         number: "01 / VISUAL DATA",
         title: "See the details.",
         description: "Images, video frames, object labels and scene understanding.",
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85",
+        image: "/images/visual-data.avif",
     },
     {
         number: "02 / AUDIO & SPEECH",
         title: "Capture every voice.",
         description: "Speech, accents, sound events, transcription and language coverage.",
-        image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1000&q=85",
+        image: "/images/audio-speech.avif",
     },
     {
         number: "03 / TEXT & DOCUMENTS",
         title: "Give language structure.",
         description: "Document capture, OCR text, entity labels and normalized transcripts.",
-        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85",
+        image: "/images/text-documents.avif",
     },
     {
         number: "04 / MULTIMODAL AI",
         title: "Connect the signals.",
         description: "Aligned data and human feedback for richer AI experiences.",
-        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1000&q=85",
+        image: "/images/multimodal-ai.avif",
     },
 ];
 export const homeProcessSteps = [

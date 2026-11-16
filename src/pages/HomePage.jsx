@@ -34,7 +34,7 @@ export function HomePage() {
                 <article
                   className="modality-card modality-image"
                   style={{
-                    backgroundImage: `linear-gradient(180deg, rgba(7,18,38,.02) 10%, rgba(7,18,38,.88) 100%), url(${card.image})`,
+                    backgroundImage: `linear-gradient(180deg, rgba(7,18,38,.02) 10%, rgba(7,18,38,.88) 100%), url("${encodeURI(card.image)}")`,
                     height: "100%",
                     width: "100%",
                   }}

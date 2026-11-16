@@ -120,6 +120,7 @@
 /* Global Heading Typography Line Spacing */
 h1, h2, h3, h4, h5, h6, .font-display {
   font-family: "Samsung Sharp Sans", "SamsungOne", Arial, sans-serif;
+  word-spacing: 0.04em;
 }
 
 .font-mono, code, pre {
@@ -151,6 +152,7 @@ html {
   max-width: 100%;
   overflow-x: hidden;
   overflow-x: clip;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -161,9 +163,12 @@ body {
   font-size: 15px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   max-width: 100%;
   overflow-x: hidden;
   overflow-x: clip;
+  -webkit-overflow-scrolling: touch;
 }
 
 #root {
@@ -477,7 +482,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-size: clamp(48px, 6.4vw, 84px);
   font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -3.2px;
+  letter-spacing: -0.02em;
+  word-spacing: 0.04em;
   color: #12151A;
   margin: 0 0 24px;
   text-shadow: 
@@ -647,7 +653,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-family: "Samsung Sharp Sans", sans-serif;
   font-size: clamp(36px, 4.5vw, 56px);
   font-weight: 800;
-  letter-spacing: -2px;
+  letter-spacing: -0.02em;
+  word-spacing: 0.04em;
   color: var(--silver-bright);
   line-height: 1.15;
   margin: 16px 0 18px;
@@ -771,7 +778,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-family: "Samsung Sharp Sans", sans-serif;
   font-size: clamp(26px, 2.8vw, 36px);
   font-weight: 800;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.015em;
+  word-spacing: 0.04em;
   color: #FFFFFF;
   margin: 0 0 16px;
   line-height: 1.2;
@@ -1059,7 +1067,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-family: "Samsung Sharp Sans", sans-serif;
   font-size: clamp(30px, 3.6vw, 43px);
   line-height: 1.18;
-  letter-spacing: -1.7px;
+  letter-spacing: -0.015em;
+  word-spacing: 0.05em;
   margin: 15px 0 14px;
   color: var(--silver-bright);
 }
@@ -1126,7 +1135,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .modality-card h3 {
   font-family: "Samsung Sharp Sans", sans-serif;
   font-size: 23px;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.01em;
+  word-spacing: 0.04em;
   line-height: 1.2;
   margin: 0 0 9px;
   color: #ffffff;
@@ -1169,7 +1179,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   font-family: "Samsung Sharp Sans", sans-serif;
   font-size: clamp(34px, 4vw, 49px);
   line-height: 1.12;
-  letter-spacing: -1.8px;
+  letter-spacing: -0.02em;
+  word-spacing: 0.04em;
   margin: 18px 0;
   color: var(--silver-bright);
 }
@@ -1436,7 +1447,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .industries-band h2 {
   font-family: "Samsung Sharp Sans", sans-serif;
   font-size: 43px;
-  letter-spacing: -1.7px;
+  letter-spacing: -0.02em;
+  word-spacing: 0.04em;
   line-height: 1.2;
   margin: 16px 0;
   color: var(--silver-bright);
@@ -1877,7 +1889,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .daqube-footer-giant-logo {
-  width: clamp(240px, 44vw, 600px);
+  width: clamp(180px, 24vw, 360px);
   max-width: 100%;
   height: auto;
   display: block;
@@ -1913,7 +1925,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     margin-top: 28px;
   }
   .daqube-footer-giant-logo {
-    width: 82%;
+    width: min(75%, 260px);
     margin-left: 0;
   }
 }
@@ -2128,7 +2140,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .form-intro h2 {
   font-family: "Samsung Sharp Sans", sans-serif;
   font-size: 27px;
-  letter-spacing: -1px;
+  letter-spacing: -0.015em;
+  word-spacing: 0.03em;
   margin: 8px 0;
   color: var(--silver-bright);
 }
@@ -2350,7 +2363,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   }
   .hero-headline {
     font-size: 44px;
-    letter-spacing: -2px;
+    letter-spacing: -0.02em;
+    word-spacing: 0.04em;
   }
   .hero-lead {
     font-size: 15px;
@@ -3908,7 +3922,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   }
   .hero-headline {
     font-size: clamp(34px, 8.5vw, 48px) !important;
-    letter-spacing: -1.5px !important;
+    letter-spacing: -0.015em !important;
+    word-spacing: 0.04em !important;
     line-height: 1.1 !important;
   }
   .hero-lead {
