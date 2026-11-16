@@ -83,6 +83,7 @@ export function App() {
           
           {/* About */}
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/about-us" element={<AboutPage />} />
 
           {/* Solutions & Services Taxonomy */}
           <Route path="/solutions" element={<ServicesPage />} />
