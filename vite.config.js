@@ -1,6 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
+
+// Explicitly target Google Chrome when opening the browser
+process.env.BROWSER = process.env.BROWSER || "chrome";
+
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
@@ -12,7 +16,7 @@ export default defineConfig({
     server: {
         port: 3000,
         host: "localhost",
-        open: false,
+        open: true,
         headers: {
             "X-Content-Type-Options": "nosniff",
             "X-Frame-Options": "DENY",
