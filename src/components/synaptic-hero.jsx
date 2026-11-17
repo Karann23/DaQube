@@ -20,6 +20,8 @@ export function SynapticHero() {
   // Guarantee cross-browser video autoplay (Safari iOS, Chrome Android, Edge, desktop)
   useEffect(() => {
     if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
       videoRef.current.play().catch(() => {
         // Autoplay fallback
       });

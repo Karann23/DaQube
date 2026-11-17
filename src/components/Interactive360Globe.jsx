@@ -30,6 +30,7 @@ export function Interactive360Globe({
     setIsReady(true);
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
+      videoRef.current.muted = true;
     }
   };
 
@@ -200,6 +201,7 @@ export function Interactive360Globe({
             ref={videoRef}
             src={videoSrc}
             playsInline
+            webkit-playsinline="true"
             muted
             preload="auto"
             onLoadedMetadata={handleLoadedMetadata}

@@ -137,6 +137,8 @@ export function NetworkPage() {
 
   useEffect(() => {
     if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
       videoRef.current.play().catch(() => {
         // Autoplay fallback
       });

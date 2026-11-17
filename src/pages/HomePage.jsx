@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, ShieldCheck, Sparkles, Target, Users, Workflow, Globe2, Calculator } from "lucide-react";
 import { SectionHeading } from "../components/section-heading";
@@ -16,7 +17,18 @@ const featuredHomeCaseStudy =
   caseStudies[0];
 
 export function HomePage() {
-    return (<>
+  const workflowVideoRef = useRef(null);
+
+  useEffect(() => {
+    if (workflowVideoRef.current) {
+      workflowVideoRef.current.muted = true;
+      workflowVideoRef.current.defaultMuted = true;
+      workflowVideoRef.current.play().catch(() => {});
+    }
+  }, []);
+
+  return (
+    <>
       <SynapticHero />
 
       <MetricsStrip />
@@ -63,8 +75,17 @@ export function HomePage() {
             <Link className="text-link text-link-light" to="/services">Explore all capabilities <ArrowRight size={17}/></Link>
           </div>
           <div className="video-showcase-frame">
-            <video autoPlay loop muted playsInline webkit-playsinline="true" preload="auto" aria-label="DaQube workflow demonstration video">
-              <source src="/videos/Workflow_Demonstration.mp4" type="video/mp4"/>
+            <video
+              ref={workflowVideoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              webkit-playsinline="true"
+              preload="auto"
+              aria-label="DaQube workflow demonstration video"
+            >
+              <source src="/videos/Workflow_Demonstration.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <span className="video-showcase-caption"> DATA COLLECTION IN MOTION</span>
