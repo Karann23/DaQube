@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ReactLenis } from "lenis/react";
+import "lenis/dist/lenis.css";
 import { SiteHeader } from "./components/site-header";
 import { SiteFooter } from "./components/site-footer";
 import { ScrollToTop } from "./components/scroll-to-top";
@@ -19,7 +21,6 @@ import { ContactPage } from "./pages/ContactPage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { TermsPage } from "./pages/TermsPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-
 
 const WARMUP_ASSETS = [
   "/images/services_image_collection.webp",
@@ -66,52 +67,64 @@ function AssetWarmup() {
 export function App() {
   return (
     <BrowserRouter>
-      {/* Skip to Main Content Link for WCAG 2.1 AA Keyboard Accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#EC5E27] focus:text-white focus:rounded-xl focus:shadow-2xl focus:font-bold focus:outline-none"
+      <ReactLenis
+        root
+        options={{
+          lerp: 0.08,
+          duration: 1.2,
+          smoothWheel: true,
+          wheelMultiplier: 1.0,
+          touchMultiplier: 1.5,
+          anchors: true,
+        }}
       >
-        Skip to main content
-      </a>
-      <ScrollToTop />
-      <AssetWarmup />
-      <SynapticParticleCanvas global />
-      <SiteHeader />
-      <main id="main-content">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          
-          {/* About */}
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/about-us" element={<AboutPage />} />
+        {/* Skip to Main Content Link for WCAG 2.1 AA Keyboard Accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#EC5E27] focus:text-white focus:rounded-xl focus:shadow-2xl focus:font-bold focus:outline-none"
+        >
+          Skip to main content
+        </a>
+        <ScrollToTop />
+        <AssetWarmup />
+        <SynapticParticleCanvas global />
+        <SiteHeader />
+        <main id="main-content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            
+            {/* About */}
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/about-us" element={<AboutPage />} />
 
-          {/* Solutions & Services Taxonomy */}
-          <Route path="/solutions" element={<ServicesPage />} />
-          <Route path="/solutions/:categorySlug" element={<ServiceCategoryPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:categorySlug" element={<ServiceCategoryPage />} />
+            {/* Solutions & Services Taxonomy */}
+            <Route path="/solutions" element={<ServicesPage />} />
+            <Route path="/solutions/:categorySlug" element={<ServiceCategoryPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:categorySlug" element={<ServiceCategoryPage />} />
 
-          {/* Network */}
-          <Route path="/network" element={<NetworkPage />} />
+            {/* Network */}
+            <Route path="/network" element={<NetworkPage />} />
 
-          {/* Quality & Trust */}
-          <Route path="/quality" element={<QualityPage />} />
+            {/* Quality & Trust */}
+            <Route path="/quality" element={<QualityPage />} />
 
-          {/* Case Studies, Industries, Insights & Legal */}
-          <Route path="/industries" element={<IndustriesPage />} />
-          <Route path="/case-studies" element={<CaseStudiesPage />} />
-          <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
-          <Route path="/insights" element={<InsightsPage />} />
-          <Route path="/insights/:slug" element={<InsightDetailPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          
-          {/* 404 Fallback */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
-      <SiteFooter />
+            {/* Case Studies, Industries, Insights & Legal */}
+            <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+            <Route path="/insights" element={<InsightsPage />} />
+            <Route path="/insights/:slug" element={<InsightDetailPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            
+            {/* 404 Fallback */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+        <SiteFooter />
+      </ReactLenis>
     </BrowserRouter>
   );
 }

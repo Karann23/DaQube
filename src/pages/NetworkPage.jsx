@@ -20,10 +20,10 @@ import {
   BadgeCheck,
   Building2,
   Lock,
-  HeartHandshake
+  HeartHandshake,
 } from "lucide-react";
 import { SectionHeading } from "../components/section-heading";
-import { Interactive360Globe } from "../components/Interactive360Globe";
+import { GithubGlobe } from "../components/GithubGlobe";
 
 const REGIONAL_HUBS = [
   {
@@ -31,36 +31,36 @@ const REGIONAL_HUBS = [
     countries: "US, Canada, Mexico",
     specialists: "5,500+",
     languages: "English (US/CA/Regional), French Canadian, Spanish (MX/US)",
-    focus: "Frontier RLHF, Medical AI, Legal Annotation, Autonomous Driving"
+    focus: "Frontier RLHF, Medical AI, Legal Annotation, Autonomous Driving",
   },
   {
     region: "Europe & UK",
     countries: "UK, Germany, France, Netherlands, Nordics, Spain, Italy",
     specialists: "7,200+",
     languages: "35+ European Languages & Regional Dialects",
-    focus: "GDPR-Compliant Data, Multilingual LLMs, Industrial Computer Vision"
+    focus: "GDPR-Compliant Data, Multilingual LLMs, Industrial Computer Vision",
   },
   {
     region: "Asia-Pacific",
     countries: "India, Japan, South Korea, Singapore, Vietnam, Australia",
     specialists: "6,800+",
     languages: "Hindi, Japanese, Korean, Mandarin, Vietnamese, 40+ Indic Dialects",
-    focus: "Dense LiDAR Segmentation, ASR Speech Corpora, Document Intelligence"
+    focus: "Dense LiDAR Segmentation, ASR Speech Corpora, Document Intelligence",
   },
   {
     region: "Latin America",
     countries: "Brazil, Colombia, Argentina, Chile, Peru",
     specialists: "3,100+",
     languages: "Brazilian Portuguese, Latin American Spanish Variants",
-    focus: "Conversational AI, Localized Retail Datasets, Audio Capture"
+    focus: "Conversational AI, Localized Retail Datasets, Audio Capture",
   },
   {
     region: "Middle East & Africa",
     countries: "UAE, Saudi Arabia, Egypt, Nigeria, Kenya, South Africa",
     specialists: "2,400+",
     languages: "Modern Standard Arabic & 12 Dialects, Swahili, Yoruba, Zulu",
-    focus: "Dialectal Speech Processing, Agriculture Vision, Localized OCR"
-  }
+    focus: "Dialectal Speech Processing, Agriculture Vision, Localized OCR",
+  },
 ];
 
 const DOMAIN_EXPERTS = [
@@ -68,61 +68,67 @@ const DOMAIN_EXPERTS = [
     icon: Code2,
     domain: "Software Engineering & Code LLMs",
     talent: "Senior Developers, Systems Architects, Security Engineers",
-    useCases: "Code generation evaluation, unit test generation, vulnerability auditing, complex repo refactoring evaluation."
+    useCases:
+      "Code generation evaluation, unit test generation, vulnerability auditing, complex repo refactoring evaluation.",
   },
   {
     icon: Stethoscope,
     domain: "Healthcare & Clinical AI",
     talent: "Board-Certified MDs, Radiologists, Clinical Researchers",
-    useCases: "Medical imaging segmentation, clinical summary evaluation, EHR query understanding, diagnostic safety red-teaming."
+    useCases:
+      "Medical imaging segmentation, clinical summary evaluation, EHR query understanding, diagnostic safety red-teaming.",
   },
   {
     icon: Scale,
     domain: "Legal & Regulatory Compliance",
     talent: "Licensed Attorneys, Legal Scholars, Compliance Officers",
-    useCases: "Contract clause classification, legal reasoning benchmark tests, statutory cross-jurisdiction analysis."
+    useCases:
+      "Contract clause classification, legal reasoning benchmark tests, statutory cross-jurisdiction analysis.",
   },
   {
     icon: Languages,
     domain: "Linguistics & Native Dialects",
     talent: "Phoneticists, Native Speakers, Professional Translators",
-    useCases: "Acoustic event tagging, low-resource language corpus collection, nuanced sentiment analysis, cultural nuance alignment."
+    useCases:
+      "Acoustic event tagging, low-resource language corpus collection, nuanced sentiment analysis, cultural nuance alignment.",
   },
   {
     icon: Eye,
     domain: "Computer Vision & Robotics Perception",
     talent: "Perception Engineers, Autonomous Systems Annotators",
-    useCases: "3D point-cloud bounding, polyline road marking, multi-camera temporal tracking, rare anomaly edge cases."
+    useCases:
+      "3D point-cloud bounding, polyline road marking, multi-camera temporal tracking, rare anomaly edge cases.",
   },
   {
     icon: Cpu,
     domain: "Frontier Alignment & Red Teaming",
     talent: "AI Safety Researchers, Domain Experts, Adversarial Testers",
-    useCases: "Jailbreak vulnerability testing, hallucination mitigation, ethical boundary alignment, multi-turn preference ranking."
-  }
+    useCases:
+      "Jailbreak vulnerability testing, hallucination mitigation, ethical boundary alignment, multi-turn preference ranking.",
+  },
 ];
 
 const VETTING_STEPS = [
   {
     step: "01",
     title: "Identity & Credential Verification",
-    desc: "Rigorous identity authentication, country of residence confirmation, and strict verification of professional degrees or licenses for specialized tracks."
+    desc: "Rigorous identity authentication, country of residence confirmation, and strict verification of professional degrees or licenses for specialized tracks.",
   },
   {
     step: "02",
     title: "Domain & Modality Competency Exam",
-    desc: "Proprietary benchmarking tests assessing annotation accuracy, guideline interpretation, and domain reasoning under timed conditions (pass rate < 18%)."
+    desc: "Proprietary benchmarking tests assessing annotation accuracy, guideline interpretation, and domain reasoning under timed conditions (pass rate < 18%).",
   },
   {
     step: "03",
     title: "Project-Specific Calibration Pilot",
-    desc: "Before joining live pipelines, candidates complete calibrated gold-standard tasks with feedback from senior project leads to align on edge-case taxonomy."
+    desc: "Before joining live pipelines, candidates complete calibrated gold-standard tasks with feedback from senior project leads to align on edge-case taxonomy.",
   },
   {
     step: "04",
     title: "Continuous Blind QA & Drift Monitoring",
-    desc: "Ongoing injection of blind gold-label tasks, inter-annotator agreement (IAA) metrics, and real-time supervisor audits to prevent annotation fatigue."
-  }
+    desc: "Ongoing injection of blind gold-label tasks, inter-annotator agreement (IAA) metrics, and real-time supervisor audits to prevent annotation fatigue.",
+  },
 ];
 
 export function NetworkPage() {
@@ -164,7 +170,6 @@ export function NetworkPage() {
         {/* Main Content Layer */}
         <div className="container relative z-10 w-full">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
-            
             {/* Left Column: Headline, Lead & CTAs */}
             <div className="max-w-2xl">
               <div className="network-breadcrumb">
@@ -179,12 +184,15 @@ export function NetworkPage() {
               </div>
 
               <h1 className="network-hero-headline">
-                Real human insight.<br />
+                Real human insight.
+                <br />
                 <span className="network-hero-headline-highlight">At global scale.</span>
               </h1>
 
               <p className="network-hero-lead">
-                Access 25,000+ verified contributors and 850+ specialized domain experts across 100+ countries, delivering high-precision data collection, annotation, and alignment for Frontier AI.
+                Access 25,000+ verified contributors and 850+ specialized domain experts across 100+
+                countries, delivering high-precision data collection, annotation, and alignment for
+                Frontier AI.
               </p>
 
               <div className="hero-actions flex flex-wrap items-center gap-4">
@@ -205,7 +213,9 @@ export function NetworkPage() {
                   <Globe2 size={20} />
                 </div>
                 <div>
-                  <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">100+ Countries</div>
+                  <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                    100+ Countries
+                  </div>
                   <div className="text-[11px] text-[#94A3B8]">Active in-field contributors</div>
                 </div>
               </div>
@@ -215,7 +225,9 @@ export function NetworkPage() {
                   <Users size={20} />
                 </div>
                 <div>
-                  <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">25,000+ Vetted</div>
+                  <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                    25,000+ Vetted
+                  </div>
                   <div className="text-[11px] text-[#94A3B8]">Pre-screened human talent</div>
                 </div>
               </div>
@@ -225,12 +237,13 @@ export function NetworkPage() {
                   <Languages size={20} />
                 </div>
                 <div>
-                  <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">120+ Languages</div>
+                  <div className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                    120+ Languages
+                  </div>
                   <div className="text-[11px] text-[#94A3B8]">Native acoustic fluency</div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -239,26 +252,37 @@ export function NetworkPage() {
       </section>
 
       {/* Network Metrics Strip */}
-      <section className="section section-tint" style={{ padding: "40px 0", borderBottom: "1px solid var(--silver-border)" }}>
+      <section
+        className="section section-tint"
+        style={{ padding: "40px 0", borderBottom: "1px solid var(--silver-border)" }}
+      >
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-4 bg-white rounded-2xl border border-[rgba(20,23,26,0.08)] shadow-sm">
-              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">100+</div>
+              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">
+                100+
+              </div>
               <div className="text-sm font-semibold text-[#12151A] mt-1">Countries Represented</div>
               <div className="text-xs text-[#5F646D] mt-0.5">True geographic diversity</div>
             </div>
             <div className="p-4 bg-white rounded-2xl border border-[rgba(20,23,26,0.08)] shadow-sm">
-              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">120+</div>
+              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">
+                120+
+              </div>
               <div className="text-sm font-semibold text-[#12151A] mt-1">Languages & Dialects</div>
               <div className="text-xs text-[#5F646D] mt-0.5">Native speaker fluency</div>
             </div>
             <div className="p-4 bg-white rounded-2xl border border-[rgba(20,23,26,0.08)] shadow-sm">
-              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">25K+</div>
+              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">
+                25K+
+              </div>
               <div className="text-sm font-semibold text-[#12151A] mt-1">Vetted Annotators</div>
               <div className="text-xs text-[#5F646D] mt-0.5">Pre-screened & calibrated</div>
             </div>
             <div className="p-4 bg-white rounded-2xl border border-[rgba(20,23,26,0.08)] shadow-sm">
-              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">99.8%</div>
+              <div className="font-display text-3xl md:text-4xl font-extrabold text-[#EC5E27] tracking-tight">
+                99.8%
+              </div>
               <div className="text-sm font-semibold text-[#12151A] mt-1">QA Benchmark</div>
               <div className="text-xs text-[#5F646D] mt-0.5">Multi-pass agreement rate</div>
             </div>
@@ -295,11 +319,12 @@ export function NetworkPage() {
         </div>
       </section>
 
-      {/* Geographic Coverage Tabs & 360 Interactive Globe */}
-      <section className="section section-tint">
-        <div className="container">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10 mb-10">
-            <div className="max-w-xl">
+      {/* Geographic Coverage Tabs & Borderless 3D Interactive GitHub Globe */}
+      <section className="section section-tint relative overflow-visible !py-12 md:!py-20">
+        <div className="container max-w-7xl relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center overflow-visible">
+            {/* Left Column: Heading, description, stats, regional buttons, and spotlight card */}
+            <div className="lg:col-span-6 flex flex-col justify-center relative z-10">
               <span className="inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[1.8px] text-[#8E939D]">
                 <span className="h-[7px] w-[7px] rounded-full bg-[#EC5E27] shadow-[0_0_10px_#EC5E27]" />
                 GEOGRAPHIC FOOTPRINT
@@ -307,11 +332,13 @@ export function NetworkPage() {
               <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-[-1.5px] text-[#12151A] md:text-5xl">
                 Global reach, <span className="text-[#EC5E27]">local nuance.</span>
               </h2>
-              <p className="mt-4 text-base leading-8 text-[#5F646D]">
-                AI models deployed worldwide must understand accents, dialects, cultural contexts, and localized environments. Explore our regional hubs.
+              <p className="mt-4 text-base leading-relaxed text-[#5F646D] max-w-xl">
+                AI models deployed worldwide must understand accents, dialects, cultural contexts,
+                and localized environments. Select a regional hub to inspect coverage and focus the
+                globe.
               </p>
-              
-              <div className="mt-6 flex flex-wrap items-center gap-3 text-xs font-mono text-[#5F646D]">
+
+              <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-mono text-[#5F646D]">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#E9ECEF] shadow-xs">
                   <Globe2 size={13} className="text-[#EC5E27]" /> 1,000+ Global Locales
                 </span>
@@ -319,76 +346,80 @@ export function NetworkPage() {
                   <Users size={13} className="text-[#EC5E27]" /> 25,000+ Native Contributors
                 </span>
               </div>
-            </div>
 
-            <div className="flex justify-center lg:justify-end shrink-0 w-full lg:w-auto">
-              <Interactive360Globe videoSrc="/videos/global-network.mp4" size={380} />
-            </div>
-          </div>
-
-          <div className="mt-8 bg-white rounded-3xl p-6 md:p-8 border border-[rgba(20,23,26,0.08)] shadow-sm">
-            {/* Tab navigation */}
-            <div className="flex flex-wrap gap-2 pb-6 border-b border-[rgba(20,23,26,0.08)]">
-              {REGIONAL_HUBS.map((hub, i) => (
-                <button
-                  key={hub.region}
-                  type="button"
-                  onClick={() => setSelectedRegion(i)}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
-                    selectedRegion === i
-                      ? "bg-[#12151A] text-white shadow-sm"
-                      : "bg-[#F5F5E2] text-[#2D3139] hover:bg-[#eaeae0]"
-                  }`}
-                >
-                  {hub.region}
-                </button>
-              ))}
-            </div>
-
-            {/* Selected tab content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 items-center">
-              <div>
-                <span className="text-xs font-bold tracking-wider text-[#EC5E27] uppercase">
-                  REGIONAL SPOTLIGHT
-                </span>
-                <h3 className="font-display text-2xl font-bold text-[#12151A] mt-1 mb-4">
-                  {REGIONAL_HUBS[selectedRegion].region}
-                </h3>
-                <div className="space-y-3.5 text-sm">
-                  <div>
-                    <span className="font-semibold text-[#12151A]">Key Countries: </span>
-                    <span className="text-[#5F646D]">{REGIONAL_HUBS[selectedRegion].countries}</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-[#12151A]">Active Talent: </span>
-                    <span className="text-[#5F646D]">{REGIONAL_HUBS[selectedRegion].specialists} vetted contributors</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-[#12151A]">Language Coverage: </span>
-                    <span className="text-[#5F646D]">{REGIONAL_HUBS[selectedRegion].languages}</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-[#12151A]">Specialty Capabilities: </span>
-                    <span className="text-[#5F646D]">{REGIONAL_HUBS[selectedRegion].focus}</span>
-                  </div>
-                </div>
+              {/* Regional Hub Buttons */}
+              <div className="mt-8 flex flex-wrap gap-2">
+                {REGIONAL_HUBS.map((hub, i) => (
+                  <button
+                    key={hub.region}
+                    type="button"
+                    onClick={() => setSelectedRegion(i)}
+                    className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                      selectedRegion === i
+                        ? "bg-[#12151A] text-white shadow-md ring-2 ring-[#38bdf8]/60 scale-[1.02]"
+                        : "bg-white text-[#2D3139] border border-[rgba(20,23,26,0.08)] hover:bg-[#F5F5E2] hover:border-[rgba(20,23,26,0.18)]"
+                    }`}
+                  >
+                    {hub.region}
+                  </button>
+                ))}
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#FDFDF1] border border-[rgba(20,23,26,0.06)] flex flex-col justify-between h-full">
-                <div>
-                  <div className="flex items-center gap-2 text-[#EC5E27] mb-2 font-semibold text-xs tracking-wide uppercase">
-                    <Globe2 size={16} /> Enterprise Sourcing Guarantee
-                  </div>
-                  <h4 className="font-display text-base font-bold text-[#12151A] mb-2">
-                    Need on-premise, localized field recording, or confidential room capture?
-                  </h4>
-                  <p className="text-xs text-[#5F646D] leading-relaxed">
-                    We deploy localized field coordinators for specialized capture—from in-cabin vehicle driving datasets to studio microphone acoustics and hospital imaging review under strict BAA agreements.
-                  </p>
+              {/* Selected Regional Spotlight Card */}
+              <div className="mt-6 p-6 rounded-2xl bg-white border border-[rgba(20,23,26,0.08)] shadow-sm">
+                <div className="flex items-center justify-between pb-3 border-b border-[rgba(20,23,26,0.06)]">
+                  <span className="text-xs font-bold tracking-wider text-[#EC5E27] uppercase">
+                    REGIONAL SPOTLIGHT · {REGIONAL_HUBS[selectedRegion].region}
+                  </span>
+                  <span className="text-[11px] font-mono text-[#8E939D] bg-[#F5F5E2] px-2.5 py-0.5 rounded-full">
+                    {REGIONAL_HUBS[selectedRegion].specialists} vetted contributors
+                  </span>
                 </div>
-                <Link to="/contact" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#EC5E27] hover:underline mt-4">
-                  Request regional cohort quote <ArrowRight size={14} />
-                </Link>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-xs sm:text-sm">
+                  <div>
+                    <span className="font-semibold text-[#12151A] block mb-0.5">Key Countries</span>
+                    <span className="text-[#5F646D] text-xs leading-relaxed">
+                      {REGIONAL_HUBS[selectedRegion].countries}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-[#12151A] block mb-0.5">Language Coverage</span>
+                    <span className="text-[#5F646D] text-xs leading-relaxed">
+                      {REGIONAL_HUBS[selectedRegion].languages}
+                    </span>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <span className="font-semibold text-[#12151A] block mb-0.5">
+                      Specialty Capabilities
+                    </span>
+                    <span className="text-[#5F646D] text-xs leading-relaxed">
+                      {REGIONAL_HUBS[selectedRegion].focus}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[rgba(20,23,26,0.06)] flex items-center justify-between">
+                  <span className="text-xs text-[#8E939D]">
+                    Need on-premise recording or localized field capture?
+                  </span>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#EC5E27] hover:underline"
+                  >
+                    Request cohort quote <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Borderless 3D Interactive GitHub Globe (~30% smaller, constant distance, continuous rotation) */}
+            <div className="lg:col-span-6 relative flex justify-center items-center py-6 lg:py-0 overflow-visible min-h-[420px] lg:min-h-[520px]">
+              <div className="w-full max-w-[460px] lg:max-w-[520px] aspect-square flex items-center justify-center overflow-visible pointer-events-auto">
+                <GithubGlobe
+                  selectedRegionIndex={selectedRegion}
+                  className="w-full h-full"
+                />
               </div>
             </div>
           </div>
@@ -426,7 +457,6 @@ export function NetworkPage() {
         <div className="container">
           <div className="bg-[#0B0E14] text-white rounded-3xl overflow-hidden border border-[rgba(255,255,255,0.08)] shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-              
               {/* Left Column: Planetary Operations Info */}
               <div className="lg:col-span-5 p-8 md:p-12 z-10 flex flex-col justify-center">
                 <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#EC5E27] mb-3">
@@ -436,7 +466,8 @@ export function NetworkPage() {
                   Follow-the-sun throughput across 100+ countries.
                 </h2>
                 <p className="text-sm md:text-base text-[#CBD5E1] leading-relaxed mb-6">
-                  Continuous 24/7 global operations delivering synchronized collection, multi-modal annotation, and real-time model evaluation across every major continent.
+                  Continuous 24/7 global operations delivering synchronized collection, multi-modal
+                  annotation, and real-time model evaluation across every major continent.
                 </p>
 
                 <div className="grid grid-cols-2 gap-3 text-xs font-mono text-[#E2E8F0] mb-8">
@@ -466,14 +497,13 @@ export function NetworkPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0B0E14] via-[#0B0E14]/30 to-transparent hidden lg:block" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E14] via-[#0B0E14]/30 to-transparent lg:hidden" />
-                
+
                 {/* HUD Glass Tag in corner */}
                 <div className="absolute bottom-5 right-5 bg-[#0B0E14]/85 backdrop-blur-md border border-white/15 px-3.5 py-2 rounded-xl flex items-center gap-2 text-xs font-mono text-white shadow-xl">
                   <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping" />
                   <span>Real-Time Contributor Mesh · Active</span>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -488,7 +518,10 @@ export function NetworkPage() {
           <div className="cta-copy">
             <span className="eyebrow">TAILORED COHORTS</span>
             <h2>Need a custom demographic or specialist cohort?</h2>
-            <p>Tell us your exact target criteria, language requirements, and volume. We assemble calibrated contributor teams in as little as 48 hours.</p>
+            <p>
+              Tell us your exact target criteria, language requirements, and volume. We assemble
+              calibrated contributor teams in as little as 48 hours.
+            </p>
           </div>
           <Link className="button button-crimson" to="/contact">
             Request Specialist Cohort <ArrowRight size={17} />
@@ -499,4 +532,5 @@ export function NetworkPage() {
     </>
   );
 }
+
 export default NetworkPage;

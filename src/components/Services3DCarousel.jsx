@@ -564,10 +564,12 @@ export function Services3DCarousel() {
           <div
             className="journal-modal-backdrop"
             onClick={() => setShowGridModal(false)}
+            data-lenis-prevent
           >
             <div
               className="journal-grid-modal"
               onClick={(e) => e.stopPropagation()}
+              data-lenis-prevent
             >
               <div className="grid-modal-header">
                 <div>
