@@ -1797,7 +1797,135 @@ export const caseStudies = [
                 "a": "Collected data goes through structured cleaning, sorting, annotation or transcription, quality validation checks, and formatting so the final dataset is organized and ready for immediate machine learning training."
             }
         ]
-    }
+    },
+    {
+        "slug": "data-quality-assurance-why-quality-data-matters-for-ml",
+        "aliases": [
+            "ml-data-quality-assurance",
+            "dataset-validation-and-qa"
+        ],
+        "title": "Data Quality Assurance: Why Quality Data Matters for Machine Learning",
+        "industry": "AI & Machine Learning Data Quality",
+        "category": "DATA QUALITY ASSURANCE",
+        "type": "Data Quality Case Study",
+        "readTime": "6 min read",
+        "date": "November 2026",
+        "image": "/images/case-studies/quality-data.png",
+        "imageAlt": "Data quality assurance review comparing mislabelled vs verified accurate ML dataset annotations",
+        "sectionPhotos": {
+            "section1": "/images/case-studies/Data Quality Assurance Why Quality Data Matters for Machine Learning/1.png",
+            "section2": "/images/case-studies/Data Quality Assurance Why Quality Data Matters for Machine Learning/2.png",
+            "section3": "/images/case-studies/Data Quality Assurance Why Quality Data Matters for Machine Learning/3.png"
+        },
+        "sectionPhotoGuides": {
+            "section1": "Side-by-side comparison showing an image with incorrect/missing bounding boxes on the left (causing model errors) versus clean, verified object detection labels on the right.",
+            "section2": "Multi-modal annotation QA workspace showing image segmentation masks, video frame tracking, text sentiment labels, and audio transcription waveforms undergoing validation checks.",
+            "section3": "Structured data validation dashboard highlighting duplicate record removal, format consistency checks, dataset balance coverage, and secure access controls."
+        },
+        "summary": "Machine learning models learn from the data they are trained on. Even if a project has a large amount of data, poor-quality information can lead to incorrect results and unreliable predictions—making data quality assurance an important part of every machine learning project.",
+        "intro": "Machine learning models learn from the data they are trained on. The quality of this data plays a major role in how well a model performs. Even if a project has a large amount of data, poor-quality information can lead to incorrect results and unreliable predictions. This is why data quality assurance is an important part of every machine learning project. It helps make sure that data is accurate, consistent, properly organised, and suitable for its intended purpose. At DaQube.ai, we understand that good AI starts with good data. From data collection and annotation to dataset preparation and validation, the quality of data needs attention at every stage.",
+        "note": "At DaQube.ai, we support AI and machine learning projects through data collection, image and video annotation, audio and text data preparation, and custom dataset solutions. Our focus is on helping businesses get data that matches their project requirements and is ready for the next stage of development.",
+        "challengeTitle": "Why Is Data Quality Assurance Important?",
+        "challenge": "A machine learning model can only learn from the information it receives. If the training data contains mistakes, missing details, or inconsistent labels, the model may learn the wrong patterns (such as struggling to identify objects when images are labelled incorrectly). Furthermore, if the training dataset is too limited, unbalanced, or does not represent real-world situations, the model may fail at generalisation on unseen data or produce unfair results due to hidden biases. Working with poor-quality data also increases project time and cost later when teams must correct labels, remove duplicate records, collect missing information, or retrain the model.",
+        "collectedDataTypes": [
+            "Image annotation: Adding labels to objects, people, or other elements in images",
+            "Bounding boxes: Marking the location of objects in an image",
+            "Image segmentation: Dividing an image into meaningful regions or individual objects",
+            "Video annotation: Labelling objects and activities across video frames",
+            "Text annotation: Labelling text for tasks such as classification and sentiment analysis",
+            "Audio annotation: Preparing speech and audio information through transcription and labelling"
+        ],
+        "approachTitle": "Why Is Data Quality Assurance Important? (Core Pillars)",
+        "approach": [
+            "1. Helps Improve Model Performance: Checking data quality reduces mistakes, missing details, and inconsistent labels—giving machine learning models more reliable information to learn from instead of learning wrong patterns.",
+            "2. Helps Models Work with New Data: Good data quality checks identify gaps and ensure the dataset represents real-world situations so models achieve strong generalisation on new information they have never seen before.",
+            "3. Reduces Bias and Supports Fair Results: Reviewing datasets, checking their coverage, and identifying missing or unbalanced examples of people, objects, or environments reduces hidden biases and supports more balanced and responsible AI systems.",
+            "4. Saves Time and Project Costs: Checking data quality early catches issues before teams have to correct labels, remove duplicate records, collect missing information, or retrain models—making the dataset easier to use during development and testing."
+        ],
+        "comparisonTable": {
+            "title": "How DaQube.ai Supports Data Quality",
+            "headers": [
+                "DaQube.ai Quality Area",
+                "Key Activities & Checks",
+                "Dataset Outcome"
+            ],
+            "rows": [
+                [
+                    "1. Organised Data Collection",
+                    "Gathering images, videos, audio recordings, text, or documents following project requirements",
+                    "Relevant and useful data matched to custom dataset requirements and project scope"
+                ],
+                [
+                    "2. Data Annotation and Labelling Checks",
+                    "Image annotation, bounding boxes, image segmentation, video, text, and audio annotation reviews",
+                    "Correct and consistent labels with mistakes identified before model training"
+                ],
+                [
+                    "3. Data Validation and Organisation",
+                    "Checking duplicate entries, missing information, reviewing labels, examining consistency, and structuring files",
+                    "Organised, validated dataset free of inconsistent formats and duplicate records"
+                ],
+                [
+                    "4. Understanding Project Requirements",
+                    "Aligning collection and preparation to industry context (e.g., medical images for healthcare vs. shelf images for retail)",
+                    "Purpose-built dataset tailored to specific industry and ML application needs"
+                ],
+                [
+                    "5. Responsible Data Handling",
+                    "Following project requirements and data protection rules for collection, access, storage, and sharing",
+                    "Privacy- and security-conscious handling of personal or sensitive details"
+                ]
+            ]
+        },
+        "deepDiveSections": [
+            {
+                "heading": "How DaQube.ai Supports Data Quality",
+                "paragraphs": [
+                    "At DaQube.ai, we focus on helping businesses and AI teams prepare datasets according to their project needs. Data quality is an important part of this process, from collecting the right information to organising and reviewing it.",
+                    "1. Organised Data Collection: Every machine learning project has different data requirements. Some projects need images or videos, while others require audio recordings, text, documents, or other types of information. The collection process should follow the project's requirements so that the data is relevant and useful. At DaQube.ai, we support different data collection needs and custom dataset requirements based on the project scope.",
+                    "2. Data Annotation and Labelling Checks: For supervised machine learning, data often needs to be labelled before it can be used for training—including image annotation, bounding boxes, image segmentation, video annotation, text annotation, and audio annotation. Correct and consistent labels help machine learning models learn from the dataset more effectively, and reviewing annotations helps identify mistakes before training.",
+                    "3. Data Validation and Organisation: Collected data may contain duplicate records, missing information, incorrect labels, or inconsistent formats. Data validation helps identify such problems by checking duplicate entries, reviewing labels, examining data consistency, and organising files into the required structure.",
+                    "4. Understanding Project Requirements: Different industries and machine learning applications need different types of data—for example, a healthcare AI project may require medical images, while a retail AI project may need product and shelf images. Understanding the purpose of the project helps determine what data is needed, how it should be collected, and what type of annotation or preparation may be required.",
+                    "5. Responsible Data Handling: Data privacy and security should also be considered when collecting and preparing datasets, especially when the information may contain personal or sensitive details. The handling process should follow the applicable project requirements and relevant data protection rules, with businesses clearly defining how data can be collected, accessed, stored, and shared before starting a project."
+                ]
+            },
+            {
+                "heading": "Conclusion",
+                "paragraphs": [
+                    "Data quality assurance is not just an extra step in machine learning. It is an important part of building models that can produce useful and reliable results. Accurate data, consistent labels, proper organisation, and regular checks can make a real difference to the success of an AI project.",
+                    "At DaQube.ai, we support AI and machine learning projects through data collection, image and video annotation, audio and text data preparation, and custom dataset solutions. Our focus is on helping businesses get data that matches their project requirements and is ready for the next stage of development. If you are planning an AI project and need support with data collection, annotation, or dataset preparation, connect with DaQube.ai to discuss your requirements."
+                ]
+            }
+        ],
+        "workflow": [
+            "1. Understanding Project Requirements (Determining required data, collection method, and industry-specific preparation)",
+            "2. Organised Data Collection (Gathering images, videos, audio, text, or documents according to project scope)",
+            "3. Data Annotation and Labelling Checks (Applying and reviewing image, bounding box, segmentation, video, text, and audio labels)",
+            "4. Data Validation and Organisation (Checking duplicates, missing info, label consistency, and file structure)",
+            "5. Responsible Data Handling & Delivery (Enforcing data protection rules for access, storage, and sharing)"
+        ],
+        "deliverables": [
+            "Relevant, organised datasets collected across images, videos, audio recordings, text, and documents",
+            "Verified annotations across image bounding boxes, segmentation, video frames, text, and audio",
+            "Validated, deduplicated datasets with consistent formats and structured file organisation",
+            "Custom industry-specific datasets prepared under strict data privacy and protection requirements"
+        ],
+        "faqs": [
+            {
+                "q": "Why is data quality assurance important in machine learning?",
+                "a": "Data quality assurance improves model performance by preventing wrong patterns from inaccurate or inconsistent labels, helps models generalise to unseen real-world data, reduces bias for fairer results, and saves project time and costs by catching errors before model training."
+            },
+            {
+                "q": "What types of data annotation and labelling checks does DaQube.ai support?",
+                "a": "DaQube.ai supports and reviews image annotation, bounding boxes, image segmentation, video annotation (objects and activities across frames), text annotation (classification and sentiment analysis), and audio annotation (speech transcription and labelling)."
+            },
+            {
+                "q": "What issues does data validation check for before training?",
+                "a": "Data validation checks for duplicate records, missing information, incorrect labels, and inconsistent formats, while examining data consistency and organising files into the required project structure."
+            }
+        ]
+    },
+    
 ];
 
 export function getCaseStudyBySlug(slug) {

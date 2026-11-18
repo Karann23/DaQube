@@ -49,7 +49,13 @@ export function CaseStudyDetailPage() {
   useEffect(() => {
     setActivePhase(0);
     setActiveDeepDiveTab(0);
-  }, [slug]);
+    if (item) {
+      document.title = `${item.title} — DaQube Case Study`;
+      const desc = item.summary || item.excerpt || "";
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && desc) metaDesc.setAttribute("content", desc);
+    }
+  }, [slug, item]);
 
   if (!item) {
     return <Navigate to="/case-studies" replace />;

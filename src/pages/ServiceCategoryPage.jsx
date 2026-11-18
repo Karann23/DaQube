@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
 import { getServiceCategory, SERVICE_CATEGORIES } from "../lib/services-taxonomy";
@@ -8,6 +9,14 @@ import { SpatialDomainStage, ServiceCaseStudiesSection } from "../components/Spa
 export function ServiceCategoryPage() {
   const { categorySlug } = useParams();
   const category = getServiceCategory(categorySlug);
+
+  useEffect(() => {
+    if (category) {
+      document.title = `${category.title} — DaQube Solutions`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && category.summary) metaDesc.setAttribute("content", category.summary);
+    }
+  }, [category]);
 
   if (!category) {
     const legacy = services.find((s) => s.slug === categorySlug);

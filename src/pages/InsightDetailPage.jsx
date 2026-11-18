@@ -1,9 +1,19 @@
+import { useEffect } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock3 } from "lucide-react";
 import { articles } from "../lib/content";
+
 export function InsightDetailPage() {
     const { slug } = useParams();
     const article = articles.find((a) => a.slug === slug);
+
+    useEffect(() => {
+        if (article) {
+            document.title = `${article.title} — DaQube Insights`;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc && article.excerpt) metaDesc.setAttribute("content", article.excerpt);
+        }
+    }, [article]);
     if (!article) {
         return <Navigate to="/insights" replace/>;
     }

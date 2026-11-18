@@ -99,16 +99,50 @@ export function ContactForm() {
 
   async function submit(e) {
     e.preventDefault();
+    if (status === "sending") return;
     setStatus("sending");
     setMessage("");
 
-    // Simulate enterprise receipt
-    setTimeout(() => {
-      setStatus("success");
-      setMessage(
-        `Thank you, ${form.name || "Colleague"}! Your project specification for ${activeCapability.label} (${volumeSummary}) has been registered. An AI Solutions Architect and Data Workflow Lead will review your acceptance criteria and reach out within 24 hours.`
-      );
-    }, 900);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    if (!accessKey) {
+      console.error("VITE_WEB3FORMS_KEY is missing. Add it to .env (local) or the hosting environment variables.");
+      setStatus("error");
+      setMessage("Something went wrong. Please try again or email us directly at hello@daqube.ai.");
+      return;
+    }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New DaQube enquiry: ${activeCapability.label}`,
+          from_name: "DaQube Website",
+          botcheck: "",
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          service: activeCapability.label,
+          scope: volumeSummary,
+          timeline: activeTimelineObj.time,
+          details: form.details
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setMessage(
+          `Thank you, ${form.name || "Colleague"}! Your project specification for ${activeCapability.label} (${volumeSummary}) has been registered. Our team will review it and reach out within 24 hours.`
+        );
+      } else {
+        throw new Error(data.message || "Submit failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setMessage("Something went wrong. Please try again or email us directly at hello@daqube.ai.");
+    }
   }
 
   if (status === "success") {

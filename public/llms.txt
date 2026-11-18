@@ -1,0 +1,31 @@
+# DaQube
+
+> The Data Behind Intelligence. Enterprise human-generated data collection, high-precision annotation, native speech transcription, and AI evaluation services for frontier AI teams.
+
+## Core Capabilities
+- **Image Collection**: Global real-world visual datasets across diverse hardware, angles, environments, and ambient lighting.
+- **Video Collection**: Multi-angle, high-frame-rate video capture across egocentric, surveillance, and dynamic scenarios.
+- **Speech & Audio Collection**: Native acoustic recordings across 1,000+ locales, dialects, accents, and acoustic profiles.
+- **Text & Document Data**: OCR extraction, domain-specific text corpora, specialized multilingual normalization.
+- **High-Precision Annotation**: 2D/3D bounding boxes, polygon segmentation, keypoint tracking, sensor fusion cuboids.
+- **Phonetic Transcription**: Verbatim and normalized speech transcripts with time-stamped speaker diarization.
+- **ADAS & LiDAR Annotation**: 3D point cloud segmentation, multi-sensor calibration, autonomous vehicle scenarios.
+- **Off-The-Shelf Datasets**: Pre-curated, commercially cleared benchmark datasets for rapid AI model training.
+
+## Key Links
+- [Homepage](https://daqube.ai/): Overview of DaQube data collection and annotation platform.
+- [About Us](https://daqube.ai/about): Our mission, founder-led team, and 4-phase data engineering approach.
+- [Solutions](https://daqube.ai/solutions): Taxonomy of data collection, annotation, and model evaluation capabilities.
+- [Services](https://daqube.ai/services): End-to-end custom dataset scoping, annotation workflows, and SLA metrics.
+- [Global Network](https://daqube.ai/network): 25,000+ verified native contributors across 1,000+ locales worldwide.
+- [Quality & Trust](https://daqube.ai/quality): Empirical QA science, Krippendorff's Alpha ≥ 0.88, ISO 27001 alignment, and air-gapped cleanrooms.
+- [Industries](https://daqube.ai/industries): Specialized data solutions for automotive, healthcare, conversational AI, and robotics.
+- [Case Studies](https://daqube.ai/case-studies): Real-world project benchmarks and production dataset deployments.
+- [Insights](https://daqube.ai/insights): Technical articles and engineering principles for high-performing AI data.
+- [Contact](https://daqube.ai/contact): Scope a custom dataset, request pricing, or schedule technical discovery.
+
+## Compliance & Security
+- ISO 27001 certified alignment and ISO/IEC 27001 standards.
+- Air-gapped Virtual Desktop Infrastructure (VDI) with disabled peripheral ports.
+- Cryptographic data erasure upon project completion.
+- GDPR and HIPAA BAA compliant data handling workflows.

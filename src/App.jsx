@@ -5,6 +5,7 @@ import "lenis/dist/lenis.css";
 import { SiteHeader } from "./components/site-header";
 import { SiteFooter } from "./components/site-footer";
 import { ScrollToTop } from "./components/scroll-to-top";
+import { SeoManager } from "./components/SeoManager";
 import { SynapticParticleCanvas } from "./components/SynapticParticleCanvas";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
@@ -86,6 +87,7 @@ export function App() {
           Skip to main content
         </a>
         <ScrollToTop />
+        <SeoManager />
         <AssetWarmup />
         <SynapticParticleCanvas global />
         <SiteHeader />
