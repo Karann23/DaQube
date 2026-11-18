@@ -178,14 +178,7 @@ export function CaseStudiesPage() {
                       loading="eager"
                       decoding="async"
                       onError={(e) => {
-                        const current = e.currentTarget.getAttribute("src");
-                        if (current && current.startsWith("/images/case-studies/")) {
-                          e.currentTarget.src = current.replace("/images/case-studies/", "/case-studies/");
-                        } else if (current && current.startsWith("/case-studies/")) {
-                          e.currentTarget.src = current.replace("/case-studies/", "/images/case-studies/");
-                        } else {
-                          e.currentTarget.style.display = "none";
-                        }
+                        e.currentTarget.style.display = "none";
                       }}
                     />
                     <span>{item.type}</span>

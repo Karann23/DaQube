@@ -4,13 +4,7 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { SynapticParticleCanvas } from "./SynapticParticleCanvas";
 
 /**
- * SynapticHero with Authentic 4K Robot Video
- * - EXACT same text, fonts, buttons, proof points, and bottom bar from moving hands version
- * - Cleaned dot-matrix background
- * - Hero extends seamlessly to top under floating header with zero gap
- * - Full robot head visible and never cut off (object-position: center top)
- * - Blue and orange synaptic animation brought ON TOP of video
- * - Responsive 3D parallax on mouse move + guaranteed autoplay on mobile & Safari
+ * Homepage Hero Section with responsive parallax and robot video background.
  */
 export function SynapticHero() {
   const [parallax, setParallax] = useState({ x: 0, y: 0 });

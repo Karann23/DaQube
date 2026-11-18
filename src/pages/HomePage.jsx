@@ -10,11 +10,15 @@ import { WhyChooseSection } from "../components/why-choose-section";
 import { DatasetEstimator } from "../components/dataset-estimator";
 import { ThreeDTiltCard } from "../components/ThreeDVisualizers";
 import { homeModalityCards, homeProcessSteps } from "../lib/home-content";
-import { caseStudies } from "../lib/content";
+import { caseStudies, articles } from "../lib/content";
 
 const featuredHomeCaseStudy =
   caseStudies.find((cs) => cs.slug === "image-and-video-annotation-services") ||
   caseStudies[0];
+
+const featuredHomeArticle =
+  articles.find((a) => a.slug === "data-quality-assurance-why-quality-data-matters-for-ml") ||
+  articles[0];
 
 export function HomePage() {
   const workflowVideoRef = useRef(null);
@@ -163,12 +167,19 @@ export function HomePage() {
         <div className="container">
           <SectionHeading eyebrow="INSIGHTS & WORKFLOWS" title="Ideas you can put to work." description="Explore practical articles and illustrative project workflows for planning better training data."/>
           <div className="home-editorial-grid">
-            <ThreeDTiltCard maxTilt={6} style={{ borderRadius: "16px" }}>
-              <Link to="/insights/why-data-coverage-matters" className="home-editorial-card" style={{ height: "100%", width: "100%" }}>
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Technology components"/>
-                <div><span className="eyebrow">DATA STRATEGY · 5 MIN READ</span><h3>Why data coverage matters more than dataset size</h3><p>Plan around real-world variation, not just a file count.</p><span className="text-link">Read the article <ArrowRight size={15}/></span></div>
-              </Link>
-            </ThreeDTiltCard>
+            {featuredHomeArticle && (
+              <ThreeDTiltCard maxTilt={6} style={{ borderRadius: "16px" }}>
+                <Link to={`/insights/${featuredHomeArticle.slug}`} className="home-editorial-card" style={{ height: "100%", width: "100%" }}>
+                  <img src={featuredHomeArticle.image} alt={featuredHomeArticle.imageAlt || featuredHomeArticle.title} />
+                  <div>
+                    <span className="eyebrow">{featuredHomeArticle.category?.toUpperCase() || "DATA STRATEGY"} · {featuredHomeArticle.readTime?.toUpperCase() || "5 MIN READ"}</span>
+                    <h3>{featuredHomeArticle.title}</h3>
+                    <p>{featuredHomeArticle.excerpt}</p>
+                    <span className="text-link">Read the article <ArrowRight size={15}/></span>
+                  </div>
+                </Link>
+              </ThreeDTiltCard>
+            )}
             {featuredHomeCaseStudy && (
               <ThreeDTiltCard maxTilt={6} style={{ borderRadius: "16px" }}>
                 <Link to={`/case-studies/${featuredHomeCaseStudy.slug}`} className="home-editorial-card" style={{ height: "100%", width: "100%" }}>
