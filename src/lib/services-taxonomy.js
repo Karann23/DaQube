@@ -9,8 +9,6 @@
  * 6. Audio Transcription Services (Speech to Text)
  * 7. ADAS & LiDAR Data Annotation (Autonomous Systems)
  * 8. Off-the-Shelf AI Training Datasets (Pre-Collected Datasets)
- *
- * References: Scale AI, LXT.ai, GTS.ai, Omnysys.com, Alanxa.ai
  */
 
 export const SERVICE_CATEGORIES = [
