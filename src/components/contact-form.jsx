@@ -103,45 +103,53 @@ export function ContactForm() {
     setStatus("sending");
     setMessage("");
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
-    if (!accessKey) {
-      console.error("VITE_WEB3FORMS_KEY is missing. Add it to .env (local) or the hosting environment variables.");
-      setStatus("error");
-      setMessage("Something went wrong. Please try again or email us directly at hello@daqube.ai.");
-      return;
-    }
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      company: form.company.trim(),
+      capability: activeCapability.label,
+      volume_scope: volumeSummary,
+      timeline: activeTimelineObj.time,
+      message: form.details.trim()
+    };
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `New DaQube enquiry: ${activeCapability.label}`,
-          from_name: "DaQube Website",
-          botcheck: "",
-          name: form.name,
-          email: form.email,
-          company: form.company,
-          service: activeCapability.label,
-          scope: volumeSummary,
-          timeline: activeTimelineObj.time,
-          details: form.details
-        })
-      });
+      const endpoint = import.meta.env.VITE_MAILER_URL || "/api/send-email";
+      let res;
+      try {
+        res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } catch (proxyErr) {
+        // Fallback directly to port 3001 if running on localhost and proxy is unreachable
+        if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+          res = await fetch("http://localhost:3001/api/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+        } else {
+          throw proxyErr;
+        }
+      }
+
       const data = await res.json();
-      if (data.success) {
+      if (res.ok && data.success) {
         setStatus("success");
         setMessage(
-          `Thank you, ${form.name || "Colleague"}! Your project specification for ${activeCapability.label} (${volumeSummary}) has been registered. Our team will review it and reach out within 24 hours.`
+          `Thank you, ${form.name || "Colleague"}! Your project specification for ${activeCapability.label} (${volumeSummary}) has been registered. An official confirmation email with a 24-hour SLA has been sent to ${form.email}. Our team will review your requirements and reach out within 24 hours.`
         );
       } else {
-        throw new Error(data.message || "Submit failed");
+        throw new Error(data.error || data.message || "Failed to dispatch project specification.");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Submission failed:", err);
       setStatus("error");
-      setMessage("Something went wrong. Please try again or email us directly at hello@daqube.ai.");
+      setMessage(
+        err.message || "Something went wrong while dispatching your request. Please email us directly at hello@daqube.ai or ayeasif.apple@gmail.com."
+      );
     }
   }
 

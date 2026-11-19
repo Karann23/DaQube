@@ -935,11 +935,27 @@
       };
 
       try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+        const endpoint = (window.location.protocol === 'file:' || (!window.location.port && window.location.hostname !== 'localhost')) 
+          ? 'http://localhost:3001/api/send-email' 
+          : '/api/send-email';
+        let response;
+        try {
+          response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (fetchErr) {
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            response = await fetch('http://localhost:3001/api/send-email', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          } else {
+            throw fetchErr;
+          }
+        }
 
         const data = await response.json();
 

@@ -17,6 +17,12 @@ export default defineConfig({
         port: 3000,
         host: "localhost",
         open: true,
+        proxy: {
+            "/api": {
+                target: "http://localhost:3001",
+                changeOrigin: true
+            }
+        },
         headers: {
             "X-Content-Type-Options": "nosniff",
             "X-Frame-Options": "DENY",
@@ -27,12 +33,18 @@ export default defineConfig({
     preview: {
         port: 3000,
         host: "localhost",
+        proxy: {
+            "/api": {
+                target: "http://localhost:3001",
+                changeOrigin: true
+            }
+        },
         headers: {
             "X-Content-Type-Options": "nosniff",
             "X-Frame-Options": "DENY",
             "Referrer-Policy": "strict-origin-when-cross-origin",
             "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
-            "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https://images.unsplash.com; media-src 'self' blob: https://videos.pexels.com; connect-src 'self' https://api.web3forms.com; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';"
+            "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https://images.unsplash.com; media-src 'self' blob: https://videos.pexels.com; connect-src 'self' http://localhost:3001; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';"
         }
     }
 });
