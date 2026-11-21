@@ -114,41 +114,81 @@ export function ContactForm() {
     };
 
     try {
-      const endpoint = import.meta.env.VITE_MAILER_URL || "/api/send-email";
-      let res;
-      try {
-        res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-      } catch (proxyErr) {
-        // Fallback directly to port 3001 if running on localhost and proxy is unreachable
-        if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-          res = await fetch("http://localhost:3001/api/send-email", {
+      const isLocalhost =
+        typeof window !== "undefined" &&
+        (window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1");
+      const isGitHubPages =
+        typeof window !== "undefined" &&
+        window.location.hostname.includes("github.io");
+
+      // Build prioritized list of endpoints
+      const candidateEndpoints = [];
+
+      if (import.meta.env.VITE_MAILER_URL) {
+        candidateEndpoints.push(import.meta.env.VITE_MAILER_URL);
+      }
+
+      // If running on GitHub Pages (static host), prioritize the live Vercel Serverless API
+      if (isGitHubPages) {
+        candidateEndpoints.push("https://da-qube.vercel.app/api/send-email");
+      }
+
+      // Standard same-origin API endpoint (works on Vercel deployment & Vite dev server proxy)
+      candidateEndpoints.push("/api/send-email");
+
+      // Standalone backend fallback for local development
+      if (isLocalhost) {
+        candidateEndpoints.push("http://localhost:3001/api/send-email");
+      }
+
+      // Production cloud fallback if same-origin failed
+      if (!candidateEndpoints.includes("https://da-qube.vercel.app/api/send-email")) {
+        candidateEndpoints.push("https://da-qube.vercel.app/api/send-email");
+      }
+
+      let dispatchSuccess = false;
+      let lastErrorMessage = "";
+
+      for (const endpoint of candidateEndpoints) {
+        try {
+          const res = await fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
           });
-        } else {
-          throw proxyErr;
+
+          const contentType = res.headers.get("content-type") || "";
+          if (contentType.includes("application/json")) {
+            const data = await res.json();
+            if (res.ok && data.success) {
+              dispatchSuccess = true;
+              break;
+            } else if (data.error || data.message) {
+              lastErrorMessage = data.error || data.message;
+            }
+          }
+        } catch (netErr) {
+          lastErrorMessage = netErr.message || "Network request failed";
         }
       }
 
-      const data = await res.json();
-      if (res.ok && data.success) {
+      if (dispatchSuccess) {
         setStatus("success");
         setMessage(
           `Thank you, ${form.name || "Colleague"}! Your project specification for ${activeCapability.label} (${volumeSummary}) has been registered. An official confirmation email with a 24-hour SLA has been sent to ${form.email}. Our team will review your requirements and reach out within 24 hours.`
         );
       } else {
-        throw new Error(data.error || data.message || "Failed to dispatch project specification.");
+        throw new Error(
+          lastErrorMessage || "Failed to dispatch project specification. Please check your connection or email ayeasif.apple@gmail.com directly."
+        );
       }
     } catch (err) {
       console.error("Submission failed:", err);
       setStatus("error");
       setMessage(
-        err.message || "Something went wrong while dispatching your request. Please email us directly at hello@daqube.ai or ayeasif.apple@gmail.com."
+        err.message ||
+          "Something went wrong while dispatching your request. Please email us directly at hello@daqube.ai or ayeasif.apple@gmail.com."
       );
     }
   }
